@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>FramptSolutions</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+
+        <header class="container">
+
+            <img src="imagem/logo.png" alt="Logo da empresa" class="logo">
+
+            <h1>FramptSolutions</h1>
+
+            <button onclick="toggleTheme()" id="temaBtn">☀️</button>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <a href="pagina2.html">Mais detalhes</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/framptsolutions" target="_blank">Instagram</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" onclick="toggleMenu(event)">GitHub ▼</a>
+
+                        <ul class="submenu" id="submenu">
+                        <li><a href="https://github.com/Romeofer" target="_blank">Romeo</a></li>
+                        <li><a href="https://github.com/ZiroHeitor" target="_blank">Heitor</a></li>
+                        <li><a href="https://github.com/luizetneves" target="_blank">Luiz</a></li>
+                        <li><a href="https://github.com/GabrielCairo" target="_blank">Gabriel</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <main class="container">
+
+            <section>
+
+                <h2>Sobre a empresa</h2>
+
+                <p>
+                    A FramptSolutions é uma empresa dedicada a fornecer soluções inovadoras em tecnologia. Com uma equipe de profissionais altamente qualificados, trabalhamos para atender às necessidades dos nossos clientes com excelência e compromisso.Nossa missão é criar softwares personalizados que solucionem qualquer tipo de problema que nossos clientes possam ter, utilizando metodologias ágeis para entregar sistemas eficientes e de alta qualidade.
+                </p>
+
+            </section>
+
+            <section>
+
+                <h2>Projetos</h2>
+
+                <div class="galeria">
+
+                    <div class="imagem">
+                        <img src="imagem/login.png"
+                            onclick="abrirImagem(this)"
+                            alt="Login">
+                        <p>Tela de login (clique para ampliar)</p>
+                    </div>
+
+                    <div class="imagem">
+                        <img src="imagem/cadastro.png"
+                            onclick="abrirImagem(this)"
+                            alt="Cadastro">
+                        <p>Tela de cadastro (clique para ampliar)</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section>
+
+                <h2>Avaliação dos Clientes</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Nota</th>
+                            <th>Comentário</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Ana</td>
+                            <td>8/10</td>
+                            <td>Sistema bem elaborado, conseguiu atender todas as necessidades e foi entregue dentro do prazo.</td>
+                        </tr>
+
+                        <tr>
+                            <td>João</td>
+                            <td>9/10</td>
+                            <td>Software muito intuitivo e fácil de usar. Atendeu todas as expectativas e ajudou a empresa a economizar tempo e dinheiro.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Maria</td>
+                            <td>7/10</td>
+                            <td>O sistema atendeu às principais necessidades, mas houve alguns problemas de usabilidade que precisam ser resolvidos. Tirando isso, foi uma excelente parceria.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Carlos</td>
+                            <td>8/10</td>
+                            <td>O sistema consegui entregar o que foi pedido, alguns erros de comunicação ocorreram mas nada que pudesse mudar o resultado final.</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </section>
+
+            <section> 
+                <h2>Paleta de Cores Usadas</h2> 
+                <div class="cores"> 
+                    <div class="cor" onclick="copiarCor('#2563EB')" style="background:#2563EB">#2563EB</div> 
+                    <div class="cor" onclick="copiarCor('#4a59df')" style="background:#4a59df;">#4a59df</div> 
+                    <div class="cor" onclick="copiarCor('#F59E0B')" style="background:#F59E0B;">#F59E0B</div> 
+                    <div class="cor" onclick="copiarCor('#2C3E50')" style="background:#2C3E50;">#2C3E50</div>
+                    <div class="cor" onclick="copiarCor('#111827')" style="background: #111827;">#111827</div> 
+                </div> 
+                <p> Paleta baseada na teoria das cores, usando o Azul (confiança), Lilas (serenidade), Laranja (energia) e Azul escuro (contraste). </p> 
+            </section>
+
+        </main>
+        <footer>
+            <p>© 2026 FramptSolutions</p>
+            <p>Desenvolvido por:FS</p>
+        </footer>
+
+        <div id="modal" class="modal" onclick="fecharImagem()">
+            <img id="imagemGrande" alt="Imagem ampliada">
+        </div>
+
+        <script>
+            function toggleTheme(){
+
+                const body = document.body;
+                const botao = document.getElementById("temaBtn");
+
+                body.classList.toggle("dark");
+
+                // SALVAR NO NAVEGADOR
+                if(body.classList.contains("dark")){
+                    localStorage.setItem("tema", "claro");
+                    botao.textContent = "🌙";
+                } else {
+                    localStorage.setItem("tema", "escuro");
+                    botao.textContent = "☀️";
+                }
+            }
+            window.onload = function(){
+
+                const temaSalvo = localStorage.getItem("tema");
+                const botao = document.getElementById("temaBtn");
+
+                if(temaSalvo === "claro"){
+                    document.body.classList.add("dark");
+                    botao.textContent = "🌙";
+                } else {
+                    botao.textContent = "☀️";
+                }
+            }
+            function toggleMenu(event){
+                event.preventDefault();
+                const menu = document.getElementById("submenu");
+
+                if(menu.style.display === "block"){
+                    menu.style.display = "none";
+                } else {
+                    menu.style.display = "block";
+                }
+            }
+            function abrirImagem(img) {
+
+                const modal = document.getElementById("modal");
+                const imagemGrande = document.getElementById("imagemGrande");
+
+                modal.style.display = "flex";
+                imagemGrande.src = img.src;
+            }
+            function fecharImagem() {
+
+                document.getElementById("modal").style.display = "none";
+            }
+            function copiarCor(cor){
+                navigator.clipboard.writeText(cor);
+                alert("Cor copiada: " + cor);
+            }
+            
+        </script>
+
+    </body>
+
+</html>

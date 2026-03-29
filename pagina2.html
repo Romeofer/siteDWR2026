@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalhes</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+
+        <header class="container">
+
+            <img src="imagem/logo.png" alt="Logo da empresa" class="logo">
+
+            <h1>Detalhes dos Projetos</h1>
+
+            <button onclick="toggleTheme()" id="temaBtn">☀️</button>
+
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <a href="index.html">Voltar</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/framptsolutions" target="_blank">Instagram</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" onclick="toggleMenu(event)">GitHub ▼</a>
+
+                        <ul class="submenu" id="submenu">
+                        <li><a href="https://github.com/Romeofer" target="_blank">Romeo</a></li>
+                        <li><a href="https://github.com/ZiroHeitor" target="_blank">Heitor</a></li>
+                        <li><a href="https://github.com/luizetneves" target="_blank">Luiz</a></li>
+                        <li><a href="https://github.com/GabrielCairo" target="_blank">Gabriel</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <main class="container">
+
+            <section>
+
+                <h2>Objetivo:</h2>
+
+                <p>
+                    O projeto tem como finalidade demonstrar a criação de interfaces voltadas para sistemas utilizados por empresas e organizações. As telas desenvolvidas simulam sistemas de cadastro, login e acompanhamento de informações.
+                </p>
+
+            </section>
+
+            <section>
+
+                <h2>O que a empresa oferece:</h2>
+
+                <ul>
+                    <li>Área exclusiva para clientes</li>
+                    <li>Visualização das doações em tempo real</li>
+                    <li>Segurança dos dados</li>
+                    <li>Acessibilidades</li>
+                    <li>Lista de medicamentos disponiveis</li>
+                    <li>Entrega de medicamentos na sua casa</li>
+                    <li>Parcerias com clínicas e hospitais</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h2>Equipe</h2>
+
+                    <ul>
+                        <li>Romeo -- Desenvolvedor</li>
+                        <li>Heitor -- Desenvolvedor</li>
+                        <li>Luiz -- Analista</li>
+                        <li>Gabriel -- Designer</li>
+                        <li>Tiago -- Banco de Dados</li>
+                    </ul>
+
+            </section>
+
+            <section>
+                <h2>Nossos Clientes</h2>
+                <p>Empresas que confiaram na FramptSolutions:</p>
+
+                <ul>
+                    <li>Clínica Vida+</li>
+                    <li>TechLog Sistemas</li>
+                    <li>Farmácia Popular+</li>
+                    <li>Hospital São Lucas</li>
+                    <li>Clínica Bem-Estar</li>
+                </ul>
+            </section>
+            
+            <section>
+
+                <h2>Exemplo</h2>
+                <div class="galeria">
+
+                    <div class="imagem">
+                        <img src="imagem/relatorio.PNG"
+                            onclick="abrirImagem(this)"
+                            alt="Relatório">
+                        <p>Tela de relatório aonde o usuário pode visualizar informações envolvendo suas compras e doações feitas. (clique para ampliar)</p>
+                    </div>
+                </div>
+
+            </section>
+            
+        </main>
+        <footer>
+            <p>© 2026 FramptSolutions</p>
+            <p>Desenvolvido por:FS</p>
+        </footer>
+
+        <div id="modal" class="modal" onclick="fecharImagem()">
+            <img id="imagemGrande" alt="Imagem ampliada">
+        </div>
+
+        <script>
+            function toggleTheme(){
+
+                const body = document.body;
+                const botao = document.getElementById("temaBtn");
+
+                body.classList.toggle("dark");
+
+                // SALVAR NO NAVEGADOR
+                if(body.classList.contains("dark")){
+                    localStorage.setItem("tema", "claro");
+                    botao.textContent = "🌙";
+                } else {
+                    localStorage.setItem("tema", "escuro");
+                    botao.textContent = "☀️";
+                }
+
+            }
+            window.onload = function(){
+
+                const temaSalvo = localStorage.getItem("tema");
+                const botao = document.getElementById("temaBtn");
+
+                if(temaSalvo === "claro"){
+                    document.body.classList.add("dark");
+                    botao.textContent = "🌙";
+                } else {
+                    botao.textContent = "☀️";
+                }
+
+            }
+            function toggleMenu(event){
+                event.preventDefault();
+                const menu = document.getElementById("submenu");
+
+                if(menu.style.display === "block"){
+                    menu.style.display = "none";
+                } else {
+                    menu.style.display = "block";
+                }
+            }
+            function abrirImagem(img) {
+                const modal = document.getElementById("modal");
+                const imagemGrande = document.getElementById("imagemGrande");
+
+                modal.style.display = "flex";
+                imagemGrande.src = img.src;
+            }
+
+            function fecharImagem() {
+                document.getElementById("modal").style.display = "none";
+            }
+        </script>
+
+    </body>
+
+</html>
